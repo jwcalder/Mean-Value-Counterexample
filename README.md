@@ -1,6 +1,12 @@
-# Mean-Value Counterexample for p-Harmmonic Functions
+# p-Harmonic Mean-Value Counterexample
 
-Calder, J., Authors, 2026. [title](https://arxiv.org/abs/). arXiv preprint arXiv:.
+This repository contains the Python code for numerical examples and the C++ code for the computer assisted proofs from the paper 
 
-The python script `shooting.py` runs all experiments and generates plots. 
+Ángel Arroyo, Jeff Calder, and Mikko Parviainen, 2026. [A counterexample to the pointwise validity of an asymptotic mean
+value property for p-harmonic functions](https://arxiv.org/abs/). arXiv:.
+
+The script `shooting.py` in the `python` folder runs all non-rigorous experiments and generates plots. There is a detailed README.md in the `cap-code` directory explaining the computer assisted code.
+
+Any questions, please email Jeff Calder: `jwcalder@umn.edu`.
+
 

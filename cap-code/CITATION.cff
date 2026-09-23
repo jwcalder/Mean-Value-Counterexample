@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the archived release."
+title: "Certified counterexamples to the pointwise asymptotic mean value property: verifier and certificates"
+abstract: >-
+  Interval-arithmetic verifier and the 23 certificate files (55,472 parameter
+  boxes) behind the certified ranges of the accompanying paper, together with
+  the pinned CAPD source and the untrusted search program.
+authors:
+  - family-names: Arroyo
+    given-names: Ángel
+  - family-names: Calder
+    given-names: Jeff
+  - family-names: Parviainen
+    given-names: Mikko
+version: "1.0"
+date-released: "2026-09-23"
+license: GPL-3.0-or-later
+repository-code: "https://github.com/jwcalder/Mean-Value-Counterexample"
+doi: "10.5281/zenodo.22904462"
+keywords:
+  - computer-assisted proof
+  - interval arithmetic
+  - p-Laplacian
+  - mean value property

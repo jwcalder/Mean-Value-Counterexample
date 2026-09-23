@@ -1,0 +1,46 @@
+CAPD, pinned
+============
+
+The verifier is built against the CAPD library.  CAPD lives in its own
+repository and moves; this directory contains the exact source the certified
+computation used, so that this deposit is self-contained and the verification
+can be reproduced without depending on an external repository still offering
+that revision.
+
+  upstream    https://github.com/CAPDGroup/CAPD
+  commit      731079217a9254ea2948d742df2b170895effe7f
+  version     6.1.0 (CAPDVersion.txt: MAJOR 6, MINOR 1)
+  license     GNU General Public License v3 (see COPYING inside the archive)
+  file        capd-7310792.tar.gz
+  sha256      0845dd15a694149522be856da0dc34a67b4f520037c620574bac4af2cd85fea5
+  sha256 of the uncompressed tar
+              e52ab507375c4f6ca82f845dd782012f1d0ad7cdf9b36327b8e19ffaaaf826e0
+
+The archive was produced from a clean checkout with
+
+    git archive --format=tar --prefix=capd-7310792/ 731079217a9254ea2948d742df2b170895effe7f > capd.tar
+    gzip -n -9 -c capd.tar > capd-7310792.tar.gz
+
+which is byte-reproducible: "git archive" is deterministic for a given commit
+and "gzip -n" omits the timestamp.  Anyone with the upstream repository can
+re-run those two commands and compare the sha256 above.  The interval
+arithmetic is CAPD's bundled filib backend with directed rounding; nothing in
+the library was modified.
+
+Build used for the certified computation
+----------------------------------------
+
+    tar xzf capd-7310792.tar.gz
+    cd capd-7310792 && mkdir build && cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/.local/capd -DCMAKE_BUILD_TYPE=Release
+    make && make install
+
+with /usr/bin/c++ (g++ 13.3.0) on x86_64 Linux.  "capd-config --cflags" then
+reports
+
+    -std=c++17 -O2 -frounding-math -D__USE_FILIB__ -DFILIB_EXTENDED -DFILIB_HAVE_SSE
+
+and the package Makefile picks those flags up through CAPD_DIR.  The
+independent rerun of September 2026 used the same revision and backend,
+compiled with Apple Clang 21 and executed for x86_64 through Rosetta on an ARM
+Mac, and reproduced every box and every printed table row.
